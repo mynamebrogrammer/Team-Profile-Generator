@@ -105,7 +105,12 @@ function promptTeam() {
                 break;
             default:
                 console.log(teamMembers);
-                const html = generateHTML();
+                const html = generateHTML( teamMembers ) 
+                console.log(html)
+                fs.mkdir("./dist", { recursive: true }, (err) => {
+                    if (err) throw err;
+                });
+
                 fs.writeFile("./dist/index.html", html, (err) => {
                     if (err) throw err;
                     console.log("The file has been saved!");
