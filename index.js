@@ -33,7 +33,7 @@ inquirer.prompt([
     message: "What is the team manager's office number?",
   },
 ]).then((answers) => {
-    console.log(answers);
+
     manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
     teamMembers.push(manager);
     promptTeam();
@@ -72,7 +72,7 @@ function promptTeam() {
                         message: "What is the engineer's github username?",
                     },
                 ]).then((engineerAnswers) => {
-                    console.log(engineerAnswers);
+                
                     const engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github);
                     teamMembers.push(engineer);
                     promptTeam();
@@ -101,7 +101,7 @@ function promptTeam() {
                         message: "What is the intern's school?",
                     },
                 ]).then((internAnswers) => {
-                    console.log(internAnswers);
+                
                     const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school);
                     teamMembers.push(intern);
                     promptTeam();
@@ -110,7 +110,6 @@ function promptTeam() {
             default:
                 console.log(teamMembers);
                 const html = generateHTML( teamMembers ) 
-                console.log(html)
                 fs.mkdir("./dist", { recursive: true }, (err) => {
                     if (err) throw err;
                 });
