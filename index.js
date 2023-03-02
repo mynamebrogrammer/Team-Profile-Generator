@@ -5,6 +5,8 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+const generateHTML = require("./src/generateHTML");
+
 const teamMembers = [];
 
 let manager;
@@ -70,6 +72,7 @@ function promptTeam() {
                         message: "What is the engineer's github username?",
                     },
                 ]).then((engineerAnswers) => {
+                    console.log(engineerAnswers);
                     const engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github);
                     teamMembers.push(engineer);
                     promptTeam();
@@ -98,6 +101,7 @@ function promptTeam() {
                         message: "What is the intern's school?",
                     },
                 ]).then((internAnswers) => {
+                    console.log(internAnswers);
                     const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school);
                     teamMembers.push(intern);
                     promptTeam();
@@ -105,7 +109,12 @@ function promptTeam() {
                 break;
             default:
                 console.log(teamMembers);
-                const html = generateHTML();
+                const html = generateHTML( teamMembers ) 
+                console.log(html)
+                fs.mkdir("./dist", { recursive: true }, (err) => {
+                    if (err) throw err;
+                });
+
                 fs.writeFile("./dist/index.html", html, (err) => {
                     if (err) throw err;
                     console.log("The file has been saved!");
