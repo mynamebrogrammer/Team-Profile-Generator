@@ -48,7 +48,7 @@ Clone the repo from [here](https://github.com/mynamebrogrammer/Team-Profile-Gene
 
 ## Demo
 
-![Demo](./assets/teamPrompt.jpg)
+[here is a demo of the app](https://youtu.be/dR1DRDWzaG4)
 
 ## Contributing
 
